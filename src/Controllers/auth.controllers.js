@@ -46,7 +46,8 @@ export async function register(req, res) {
 
     const accessToken = jwt.sign({
         id: newuser._id,
-        sessionId: session.id
+        role: newuser.role,
+        sessionId: session._id
     }, config.JWT_SECRET, {
         expiresIn: "15m"
     })
@@ -65,7 +66,7 @@ export async function register(req, res) {
             email: newuser.email,
             role: newuser.role
         },
-        refreshToken
+        accessToken
     })
 }
 
@@ -75,7 +76,7 @@ export async function login(req, res) {
     const userfind = await user.findOne({ email });
 
     if(!userfind){
-        res.status(400).json({
+        return res.status(400).json({
             message: "Invalid email or password"
         })
     }
@@ -84,7 +85,7 @@ export async function login(req, res) {
     const checkPassword = passwordHash === userfind.password;
 
     if(!checkPassword){
-        res.status(400).json({
+        return res.status(400).json({
             message: "Invalid email or password"
         })
     }
@@ -113,7 +114,8 @@ export async function login(req, res) {
 
     const accessToken = jwt.sign({
         id: userfind._id,
-        sessionId: session.id,
+        role: userfind.role,
+        sessionId: session._id,
     }, config.JWT_SECRET, {
         expiresIn: "15m"
     })

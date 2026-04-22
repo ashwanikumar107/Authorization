@@ -2,7 +2,7 @@
 
 A backend practice project built with **Node.js**, **Express.js**, **MongoDB**, and **Mongoose** to learn **JWT authentication**, **session handling**, **role-based authorization**, and **protected CRUD APIs**.
 
-> This project is mainly for practice and learning backend authorization flow step by step.
+This project is mainly for practice and learning backend authorization flow step by step.
 
 ---
 

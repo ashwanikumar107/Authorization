@@ -1,22 +1,22 @@
 import Router from "express";
-import {VerifyToken} from "../middlewares/verifyToken.js";
+import { IsLoggedIn } from "../middlewares/IsLoggedIn.js";
 import authorizeRoles from "../middlewares/userMiddlerware.js";
 
 const router = Router();
 
-router.get("/admin", VerifyToken, 
+router.get("/admin", IsLoggedIn, 
     authorizeRoles("admin"),
     (req, res) => {
     res.send("Welcome admin");
 })
 
-router.get("/manager", VerifyToken,
+router.get("/manager", IsLoggedIn,
     authorizeRoles("admin", "manager"),
     (req, res) => {
     res.send("Welcome manager");
 })
 
-router.get("/user", VerifyToken, 
+router.get("/user", IsLoggedIn, 
     authorizeRoles("admin", "manager", "User"),
     (req, res) => {
     res.send("Welcome user");

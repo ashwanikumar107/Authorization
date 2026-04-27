@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import config from "../config/config.js";
 
-export async function VerifyToken(req, res, next) {
+export async function IsLoggedIn(req, res, next) {
     let token;
     const authHeader = req.headers.authorization || req.headers.Authorization;
 

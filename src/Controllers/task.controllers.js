@@ -2,13 +2,13 @@ import taskModel from "../models/tasks.model.js";
 
 export async function createTask(req, res) {
     try{
-        const { title, description, status, createdBy} = req.body;
+        const { title, description, status} = req.body;
 
         const newtask = await taskModel.create({
             title,
             description,
             status,
-            createdBy
+            createdBy: req.user.id
         })
 
         res.status(200).json({

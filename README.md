@@ -30,7 +30,7 @@ This project is mainly for practice and learning backend authorization flow step
 - JWT
 - Cookie Parser
 - Dotenv
-
+- Postman
 ---
 
 ## Project Goal

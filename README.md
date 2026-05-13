@@ -43,3 +43,4 @@ The main goal of this project is to understand:
 - how JWT tokens are verified
 - how roles like **admin**, **manager**, and **user** can be restricted
 - how protected CRUD routes work
+- how backend restrict permission
